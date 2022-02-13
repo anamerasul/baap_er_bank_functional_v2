@@ -37,6 +37,27 @@ function updateTotalField(InputValue,InputId){
 }
 
 
+function updateBalance(previousAmountId,isAdd,InputValue){
+
+        const previousBalance=document.getElementById(previousAmountId);
+        const previousBalanceText=previousBalance.innerText;
+        const previousBalanceValue=parseFloat(previousBalanceText);
+
+        // const TotalBalance=previousBalanceValue+depositInputValue;
+        // previousBalance.innerText=TotalBalance
+
+        if(isAdd==true){
+        const TotalBalance=previousBalanceValue+InputValue;
+        previousBalance.innerText=TotalBalance
+        }
+
+        else{
+                const TotalBalance=previousBalanceValue-InputValue;
+                previousBalance.innerText=TotalBalance
+        }
+}
+
+
 
 // deposit button handle
 document.getElementById('deposit-btn').addEventListener('click', function(){
@@ -55,6 +76,8 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
         const  depositInputValue=getInputValue('deposit-amount');
 
         updateTotalField(depositInputValue, 'deposit-total')
+
+        updateBalance('balance-total',true,depositInputValue)
         // previous deposit value
         // const previousDepositAmmout=document.getElementById('deposit-total');
         // const previousDepositAmmoutText=previousDepositAmmout.innerText;
@@ -67,15 +90,15 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
 
         // previousDepositAmmout.innerText=totalDepositAmmount
          // update balance
-        const previousBalance=document.getElementById('balance-total');
-        const previousBalanceText=previousBalance.innerText;
-        const previousBalanceValue=parseFloat(previousBalanceText);
+        // const previousBalance=document.getElementById('balance-total');
+        // const previousBalanceText=previousBalance.innerText;
+        // const previousBalanceValue=parseFloat(previousBalanceText);
 
-        const TotalBalance=previousBalanceValue+depositInputValue;
-        previousBalance.innerText=TotalBalance
+        // const TotalBalance=previousBalanceValue+depositInputValue;
+        // previousBalance.innerText=TotalBalance
         // clear input
 
-        depositInput.value='';
+        // depositInput.value='';
 
        
 });
@@ -109,12 +132,7 @@ document.getElementById('withdraw-btn').addEventListener('click',function(){
         // previousWithdrawAmmount.innerText=TotalWithdraw;
 
         // update balance
-        const previousBalance=document.getElementById('balance-total');
-        const previousBalanceText=previousBalance.innerText;
-        const previousBalanceValue=parseFloat(previousBalanceText);
-
-        const TotalBalance=previousBalanceValue-withdrawInputValue;
-        previousBalance.innerText=TotalBalance
+        updateBalance('balance-total',false,withdrawInputValue)
 
 
 
