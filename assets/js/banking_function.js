@@ -21,6 +21,21 @@ function getInputValue(inputId){
 
 }
 
+//  Deposit and withdraw update with one function
+
+function updateTotalField(InputValue,InputId){
+        const previousInputAmmout=document.getElementById(InputId);
+        const previousInputAmmoutText=previousInputAmmout.innerText;
+        console.log(previousInputAmmoutText);
+
+        const previousInputAmmoutvalue=parseFloat(previousInputAmmoutText);
+        console.log(previousInputAmmoutvalue);
+        // total  value
+        const totalAmmount=previousInputAmmoutvalue+InputValue;
+
+        previousInputAmmout.innerText=totalAmmount
+}
+
 
 
 // deposit button handle
@@ -38,17 +53,19 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
 
         // console.log(depositInputValue)
         const  depositInputValue=getInputValue('deposit-amount');
+
+        updateTotalField(depositInputValue, 'deposit-total')
         // previous deposit value
-        const previousDepositAmmout=document.getElementById('deposit-total');
-        const previousDepositAmmoutText=previousDepositAmmout.innerText;
-        console.log(previousDepositAmmoutText);
+        // const previousDepositAmmout=document.getElementById('deposit-total');
+        // const previousDepositAmmoutText=previousDepositAmmout.innerText;
+        // console.log(previousDepositAmmoutText);
 
-        const previousDepositAmmoutvalue=parseFloat(previousDepositAmmoutText);
-        console.log(previousDepositAmmoutvalue);
-        // total deposit value
-        const totalDepositAmmount=previousDepositAmmoutvalue+depositInputValue;
+        // const previousDepositAmmoutvalue=parseFloat(previousDepositAmmoutText);
+        // console.log(previousDepositAmmoutvalue);
+        // // total deposit value
+        // const totalDepositAmmount=previousDepositAmmoutvalue+depositInputValue;
 
-        previousDepositAmmout.innerText=totalDepositAmmount
+        // previousDepositAmmout.innerText=totalDepositAmmount
          // update balance
         const previousBalance=document.getElementById('balance-total');
         const previousBalanceText=previousBalance.innerText;
@@ -78,16 +95,18 @@ document.getElementById('withdraw-btn').addEventListener('click',function(){
 
         const withdrawInputValue=getInputValue('withdraw-amount')
 
+        updateTotalField(withdrawInputValue, 'withdraw-total')
+
         // previous  withdraw input
-        const previousWithdrawAmmount=document.getElementById('withdraw-total');
-        const previousWithdrawAmmountText= previousWithdrawAmmount.innerText;
-        const previousWithdrawAmmountValue=parseFloat(previousWithdrawAmmountText);
+        // const previousWithdrawAmmount=document.getElementById('withdraw-total');
+        // const previousWithdrawAmmountText= previousWithdrawAmmount.innerText;
+        // const previousWithdrawAmmountValue=parseFloat(previousWithdrawAmmountText);
 
-        // update withdraw input
+        // // update withdraw input
 
-        const TotalWithdraw=previousWithdrawAmmountValue+withdrawInputValue;
+        // const TotalWithdraw=previousWithdrawAmmountValue+withdrawInputValue;
 
-        previousWithdrawAmmount.innerText=TotalWithdraw;
+        // previousWithdrawAmmount.innerText=TotalWithdraw;
 
         // update balance
         const previousBalance=document.getElementById('balance-total');
